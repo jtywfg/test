@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="announce">
+	<head>
+		<title>News</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="../../zProgress/css/reset.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="../../zProgress/css/layout.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="../../zProgress/css/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="../../zProgress/css/zerogrid.css" />
+		<link rel="stylesheet" href="../../zProgress/css/responsive.css" />
+		<link rel="stylesheet" href="../../static/css/calendar.css" />
+		<script src="../../angular/angular.min.js"></script>
+		<script src="../../angular/angular-route.min.js"></script>
+		<script src="../../angular/announce.js"></script>
+		<script src="../../zProgress/js/css3-mediaqueries.js"></script>
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="js/html5.js"></script>
+			<style type="text/css">
+				.bg{ behavior: url(js/PIE.htc); }
+			</style>
+		<![endif]-->
+		<!--[if lt IE 7]>
+			<div style='clear: both; text-align:center; position: relative;'>
+				<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/../../../zProgress/images/upgrade.jpg" border="0" alt="" /></a>
+			</div>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="main zerogrid">
+			<article id="content" ng-controller="AnnounceListController">
+				<div class="wrapper pad_bot2" ng-repeat="announce in announces" class="thumbnail">
+					<div class="holder">
+						<div class="month blue">
+<!-- 							<p>{{announce.createTime | getStringToDate | date : 'yyyy-MM'}}</p>
+ -->						<!-- 使用内置的过滤器 -->
+							<p>{{announce.createTime | limitTo : 7}}</p>
+ </div>
+					<div class="day">
+						<p>{{announce.createTime | limitTo : -11 | limitTo : 2}}</p>
+						</div>
+					</div>
+					<h5>
+						{{announce.title}}
+					</h5>
+					<p class="pad_bot1">
+						{{announce.content}}
+					</p>
+				</div>
+			</article>
+		</div>
+	</body>
+</html>

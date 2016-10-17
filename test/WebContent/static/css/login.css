@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+*{margin:0; padding:0;}
+body{background:url(../img/loginBG.png) repeat-x 0 255px; font:14px "微软雅黑", "宋体"}
+.wrap{width:1000px; margin:0 auto; overflow:hidden;}
+#logo{float:left; width:799px; hieght:425px; position:absolute; top:182px; left:100px;}
+form{float:right; width:450px; height:235px; margin-top:300px; position:relative;}
+form input{position:absolute; border:none;}
+form label{position:absolute; font-size:15px; font-weight:bold; left:10px; color:white;}
+#username,#pwd{width:295px; height:40px; line-height:40px; background:url(../../static/img/formElements.png) no-repeat; left:80px; padding:0 10px 0 40px; box-shadow:inset 0 0 10px #000; outline:0; }
+#username{top:22px;}
+#pwd{top:80px; background-position:0 -40px;}
+#ck{width:159px; height:40px; line-height:40px; background:url(../../static/img/formElements.png) no-repeat 0 -80px; left:0; top:137px; padding:0 10px 0 40px;}
+#ckimg{width:130px; height:40px; top:137px; left:215px; cursor:pointer; position:absolute;}
+.inputInfo{color:#969696;}
+#sub,#reset{width:130px; height:36px; cursor:pointer; background:url(../../static/img/formElements.png) no-repeat; top:199px;}
+#reset{background-position:0 -120px; left:215px;}
+#reset:hover{background-position:-130px -120px;}
+#sub{background-position:0 -156px; left:79px;}
+#sub:hover{background-position:-130px -156px;}
+#userTxt{top:30px;}
+#pwdTxt{top:90px;}

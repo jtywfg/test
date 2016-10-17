@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties>
+		<!-- oracle 或者  mysql-->
+		<property name="dialect" value="mysql"/>
+		<!-- sql分页拦截的语句格式 -->
+		<property name="pageSqlId" value=".*Page$"/>
+		<!-- showsql -->
+		<property name="showsql" value="true"/>
+	</properties>
+	<!--  
+	<typeAliases> 
+		<typeAlias alias="ArticleClass" type="com.jty.zywadmin.model.ArticleClass"/> 
+		<typeAlias alias="Balance" type="com.jty.zywadmin.model.Balance"/> 
+		<typeAlias alias="MemberInfo" type="com.jty.zywadmin.model.MemberInfo"/> 
+		<typeAlias alias="PointLog" type="com.jty.zywadmin.model.PointLog"/> 
+		<typeAlias alias="WagePay" type="com.jty.zywadmin.model.WagePay"/> 
+		<typeAlias alias="WageSend" type="com.jty.zywadmin.model.WageSend"/> 
+		<typeAlias alias="WorkLogDetail" type="com.jty.zywadmin.model.WorkLogDetail"/> 
+	</typeAliases>
+	-->
+</configuration>

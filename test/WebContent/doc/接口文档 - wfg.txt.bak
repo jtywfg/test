@@ -1,0 +1,126 @@
+
+1、查找顶级菜单-----GET
+/menu/getTopMenu
+
+2、查找子级菜单-----POST
+/menu/getMenuByParent
+参数：String PARENTID--顶级菜单ID
+
+3、首页公告--GET
+/announce/getAnnounce
+
+
+4、分页列表--GET
+/announce/findAnnounce?page=1&rows=1
+
+
+5、新增公告---POST
+/announce/addAnnounce
+String title
+String content
+
+
+6、修改公告--POST
+/announce/updateAnnounce
+
+Integer id
+String title
+String content
+
+7、删除公告--POST
+/announce/deleteAnnounce
+
+Integer id
+
+8、购买保险---POST
+/order/buyOrder
+String product----险种id  以逗号分隔
+Double totalMoney---险种总金额
+Double carMoney
+
+
+9、险种类别---GET---不分页
+/product/getProduct
+
+10、订单管理---GET
+/order/findOrder?page=1&rows=1  
+& String RealName ---模糊查询
+& Integer OrderState----支付状态（0所有  1 待支付 2 已支付3 已取消）
+
+11、订单明细--GET
+order/getProductByOrder?orderCode=CZ1470272460232
+
+
+12、险种类别新增---POST
+product/addProduct
+三个参数如下：
+ private String productNo;
+    private String productName;
+    private Double money;
+
+
+13、险种类别修改---POST
+product/updateProduct
+
+	private Integer id;
+    private String productNo;
+    private String productName;
+    private Double money;
+
+
+14、险种类别删除---POST
+product/deleteProduct
+参数一个：
+	private Integer id;
+
+
+
+
+
+15、提现-申请-----POST（本功能界面会使用到方法16）
+
+fundaccount/applyUsableMoney
+Double drawMoney--提现金额
+
+
+16 可提现金额数-----GET
+fundaccount/findUsableMoney
+
+
+
+17、我的提现列表----GET（放在金涛的返现列表--搞一个下拉选【0所有 -1提现  1返现】查询：返现/提现）
+
+
+
+
+18、提现-审核----POST
+fundaccount/reviewDraw
+Long id,
+Integer isCheck(1审核通过，2审核不通过)
+
+
+
+19、审核列表--GET--分页
+fundaccount/findDrawList?page=1&rows=1
+
+
+--------九月新增方法---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="announce">
+	<select id="getAnnounce" parameterType="Map" resultType="Map">
+		SELECT * FROM announce an WHERE an.`deleteFlag`=0 ORDER BY an.`createTime` DESC LIMIT 0,5
+	</select>
+	<select id="findAnnouncePage" parameterType="Map" resultType="Map">
+		SELECT * FROM announce an WHERE an.`deleteFlag`=0  ORDER BY an.`createTime` DESC
+	</select>
+</mapper>

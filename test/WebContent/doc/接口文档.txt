@@ -1,0 +1,115 @@
+http://192.168.223.200:8080/test/user/loginOut
+退出登录
+
+
+录入用户信息post 请求
+http://192.168.223.200:8080/test/user/register
+UserName 用户名
+RealName 真实姓名
+Password 密码
+Telphone 电话号码
+cardNum 身份证号码
+carNum 车牌号
+drivingLicence 驾驶证
+bankAccount 开户行
+bankCard 银行卡
+
+
+查询用户信息 get
+http://192.168.223.200:8080/test/user/findUser
+UserId 用户id
+
+查询登录用户信息 get
+http://192.168.223.200:8080/test/user/findLoginUser
+
+
+
+修改密码 get
+http://192.168.223.200:8080/test/user/changePassword
+UserId 用户id
+Password 新密码
+type=1 重置密码   0修改密码
+
+
+更新用户信息 pos请求
+http://192.168.223.200:8080/test/user/updateUser
+UserId 用户id
+RealName 真实姓名
+Telphone 电话号码
+cardNum 身份证号码
+carNum 车牌号
+drivingLicence 驾驶证
+bankAccount 开户行
+bankCard 银行卡
+
+
+分页查询用户信息
+http://192.168.223.200:8080/test/user/findUserList?page=1&rows=1
+UserName 用户名 模糊匹配
+
+
+删除用户【假删除】get
+http://192.168.223.200:8080/test/user/deleteUser?UserId=1
+UserId 用户id
+
+
+禁用用户 get
+http://192.168.223.200:8080/test/user/freezedUser
+UserId 用户id
+type=1 禁用   0启用
+
+
+查询代理比率
+http://192.168.223.200:8080/test/constant/findConstant
+
+
+更新代理比率
+http://192.168.223.200:8080/test/constant/updateConstant?oneParam=0.3&twoParam=0.1
+oneParam 一级代理
+twoParam 二级代理
+
+
+支付宝支付请求 post请求
+http://192.168.223.200:8080/test/order/alipayapi
+orderId=1 订单编号
+
+
+查询返金,提现记录，admin查询所有，个人查询自己   type :-1 提现 1返金
+http://192.168.223.200:8080/test/fundaccount/fundaccountList?type=1&rows=1&page=1
+
+统计报表
+http://192.168.223.200:8080/test/report/returnReport?rows=1&page=1
+
+导出报表
+http://192.168.223.200:8080/test/report/exportAccount
+
+
+
+录入用户拥有的车辆信息post
+userCar/addUserCar
+  `userId` int(11) NOT NULL COMMENT '用户id(对应用户表中的)',
+  `carNum` varchar(20) collate utf8_bin default NULL COMMENT '车牌号',
+  `vehicleLicence` varchar(20) collate utf8_bin default NULL COMMENT '行驶证',
+
+
+购买人查询get
+user/findAllUser
+
+根据用户查拥有的车信息get
+http://localhost:8080/test/userCar/findUserCar?userId=2
+
+查询用户订单 get
+http://localhost:8080/test/userOrder/findUserOrder?userId=2
+
+录入订单信息,并返积分到推荐订单账户 post
+userOrder/addUserOrder
+  `orderCode` varchar(20) NOT NULL COMMENT '订单编号',
+  `userId` bigint(11) NOT NULL,
+  `totalMoney` double default NULL,
+  `createTime` datetime default NULL,
+  `startTime` datetime default NULL COMMENT '生效日期开始',
+  `endTime` datetime default NULL COMMENT '生效日期结束',
+  `carId` bigint(11) default NULL COMMENT 'usercar表对应的id',
+  `tjOrderCode` varchar(20) default NULL COMMENT '推荐人的购买订单号',
+  
+  

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fundAccount">
+	<select id="findReturnMoney"  resultType="Double">
+		SELECT SUM(fc.`ReturnAmount`) AS returnMoney FROM fundaccount fc WHERE fc.`type`=1 AND fc.`UserId`=#{id}
+	</select>
+	<select id="findDrawMoney"  resultType="Double">
+		SELECT SUM(fc.`ReturnAmount`) AS drawMoney FROM fundaccount fc WHERE fc.`type`=-1 AND (fc.`isCheck`=0 OR fc.`isCheck`=1 ) AND fc.`UserId`=#{id}
+	</select>
+	<select id="fundaccountListPage"  parameterType="Map" resultType="Map">
+		select f.*, u.userName, u.realName, u.telphone from fundaccount f, user u where f.userId=u.id
+		<if test="null != type and '' != type">
+		  and f.type=#{type}
+		</if>
+		<if test="null != userId and '' != userId">
+		  and f.userId=#{userId}
+		</if>
+		<if test="null != realName and '' != realName">
+		  and u.realName like CONCAT('%','${realName}','%')
+		</if>
+		order by f.createTime desc
+	</select>
+	<select id="findDrawListPage"  parameterType="Map" resultType="Map">
+		select f.*,u.userName,u.realName,u.telphone from fundaccount f ,user u where f.userId=u.id
+		  and f.type=-1 
+		<if test="null != userId and '' != userId">
+		  and f.userId=#{userId}
+		</if>
+		order by f.createTime desc
+	</select>
+</mapper>

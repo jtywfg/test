@@ -1,0 +1,62 @@
+一、用户user表（只区分客户与管理员两种角色）
+
+UserId  
+UserName--登录名 
+Password        ---密码     
+RealName    ---真实姓名
+Sex  --性别
+Birthday  
+Email  
+Telphone 
+OperationType ---删掉
+UserType --0：客户  1：管理员 
+CreateTime 
+Freezed 0：未冻结  1：已冻结
+LastUpdateTime  
+DeleteFlag  
+LastLoginTime 
+LastLoginIp  ---删掉
+
+
+身份证号
+车牌号
+驾驶证号
+
+开户行 
+银行卡号
+
+联系固话
+家庭地址
+
+二、菜单menu表
+MENUID   int(10) NOT NULL   菜单主键ID
+MENUNAME    varchar(10) NOT NULL 菜单名称
+MENUURL    varchar(100) NULL 菜单url
+PARENTID     int(10) NOT NULL 父级菜单ID
+ISCHILDREN    tinyint(4) NOT NULL  是否是子菜单
+LEVEL        int(1) NOT NULL   层级
+
+三、险种productType类别
+
+
+四、购买保险-订单order表
+
+
+
+五、用户代理信息userAgent表
+id  
+UserId  用户id(对应用户表中的)
+agentLevel   代理级别（1 一级，2 二级）
+cashback 返现金额
+tjUserId   推荐人id
+
+
+六、配置费用参数constant表
+id
+oneParam 一级代理比（20%）
+twoParam 二级代理比（10%）
+
+七、公告通知notice表
+
+
+

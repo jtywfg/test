@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+#school-infoWin{
+    padding:20px;
+}
+.messager-button .l-btn{
+	width:auto!important;
+	min-width:50px;
+}
+#spCheck{
+	margin-top:20px;
+	width:90%;
+	display:none;
+}
+#queryArea{
+	padding: 10px 0;
+}
+#multiple,
+.second{
+	margin:20px;
+	border-bottom: 2px solid #c9c9c9;
+	font-weight:bold;
+    height:21px;
+    font-size: 16px;
+    color: #656565;
+}
+#multiple{
+	margin:20px 20px 50px 20px;
+}
+#multiple li{
+	float: left;;
+	margin: 0 25px;
+}
+.multipleLine,.multipleLine2{
+	border-bottom: 2px solid #00a4e4;
+	color:#00a4e4;
+}
+#schoolDetail{padding: 20px;}

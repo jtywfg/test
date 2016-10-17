@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>管理系统-登录页面</title>
+		
+		<link rel="stylesheet" href="jquery-easyui-1.5/themes/default/easyui.css" type="text/css"></link>
+		<link rel="stylesheet" type="text/css" href="static/css/base.css" />
+    	<link rel="stylesheet" href="jquery-easyui-1.5/themes/icon.css" type="text/css"></link>
+    	<link rel="stylesheet" type="text/css" href="static/css/login.css"/>
+		<script type="text/javascript" src="static/lib/jquery/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="static/lib/layer/layer.min.js"></script>
+		<script type="text/javascript" src="jquery-easyui-1.5/jquery.easyui.min.js?v=<%=version%>"></script>
+		<script type="text/javascript" src="static/js/login.js"></script>
+	</head>
+	<body>
+    	<div class="wrap">
+    		<img src="static/img/logo.png" id="logo"/>
+    		<form>
+    			<label id="userTxt">用户名：</label>
+    			<label id="pwdTxt">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+    			<input type="text" id="username" data-options="用户名"/>
+    			<input type="password" id="pwd"/>
+    			<!-- <input type="text" id="ck" data-options="请输入验证码"/>
+    			<img src="loginAction!getCode.action" id="ckimg"/> -->
+    			<input type="reset" id="reset" value=""/>
+    			<input type="button" id="sub" value=""/>
+    		</form>
+    	</div>
+	</body>
+</html>

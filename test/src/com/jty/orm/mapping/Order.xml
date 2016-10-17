@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+	<select id="findOrderListPage" parameterType="Map" resultType="Map">
+		select bo.*,u.RealName,u.UserName from buyorder bo,user u where u.id=bo.UserId 
+		<if test="null != RealName and '' != RealName">
+			AND (u.RealName like CONCAT('%','${RealName}','%')or u.UserName like CONCAT('%','${RealName}','%'))
+		</if>
+		<if test="null != OrderState and OrderState != 0">
+			and bo.OrderState=#{OrderState} 
+		</if>
+		<if test="null != UserId">
+			and bo.UserId=#{UserId} 
+		</if>
+		ORDER BY bo.createTime DESC
+	</select>
+	<select id="checkCalcMoney"  resultType="Double">
+		SELECT SUM(money) AS totalMoney FROM productType WHERE id IN (${ids})
+	</select>
+	<select id="checkOrderCount" parameterType="Map" resultType="Integer">
+		<!-- SELECT COUNT(0) FROM buyorder bo WHERE INSTR(product,#{id})>0 -->
+		SELECT COUNT(0) FROM buyorderdetail WHERE productid=#{id}
+	</select>
+	
+	<select id="findProductIds" resultType="map">
+		SELECT bo.`product` FROM buyorder bo WHERE bo.`orderCode`=#{orderCode}
+	</select>
+<select id="findproductDetail" resultType="map">
+	SELECT * FROM productType pt WHERE pt.`id` IN (${productIds})
+</select>
+	
+</mapper>

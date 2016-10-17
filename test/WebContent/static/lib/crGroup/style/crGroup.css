@@ -1,0 +1,8 @@
+.crGroupCon{display:inline-block;}
+.crGroup{display:inline-block; font-size:13px; color:#333;width:100px; cursor:pointer; line-height:15px; margin-right:15px;  margin-bottom:10px; overflow:hidden;}
+.crGroup.img{width:108px; height:28px; padding:12px 15px 0 15px; background:url(../images/crGroup.png) no-repeat 0 -30px;}
+.crGroup .btn{float:left; margin-right:6px; width:15px; height:15px; overflow:hidden; background:url(../images/crGroup.png) no-repeat;}
+.checkbox.selected .btn{background-position:-15px 0;}
+.radio .btn{background-position:0 -15px;}
+.radio.selected .btn{background-position:-15px -15px;}
+.crGroupHide{display:none;}

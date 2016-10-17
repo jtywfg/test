@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<select id="findUser" parameterType="Map" resultType="com.jty.model.User">
+		select * from user t where 1=1 
+		<if test="null != userId and '' != userId">
+		and t.id=#{userId} 
+		</if>
+		<if test="null != mobile and '' != mobile">
+		and t.telphone=#{mobile} 
+		</if>
+		<if test="null != pwd and '' != pwd">
+		and t.password=#{pwd}
+		</if>
+		<if test="LoginName != null">and (UserName=#{LoginName})
+        </if>
+	</select>
+	<select id="findNodeleteList" parameterType="Map" resultType="com.jty.model.User">
+		select * from user t where t.deleteFlag=0 and t.userName !='admin'
+	</select>
+	<select id="findUserListPage" parameterType="Map" resultType="Map">
+		select t.*,b.balanceIntegral from user t ,balance b where t.id=b.UserId and t.deleteFlag=0 and t.userName !='admin'
+		<if test="null != userName and '' != userName">
+		and t.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != realName and '' != realName">
+		and t.realName like CONCAT('%','${realName}','%')
+		</if>
+		<if test="null != telphone and '' != telphone">
+		and t.telphone=#{telphone}
+		</if>
+		<if test="null != cardNum and '' != cardNum">
+		and t.cardNum like CONCAT('%','${cardNum}','%')
+		</if>
+		<if test="null != drivingLicence and '' != drivingLicence">
+		and t.drivingLicence like CONCAT('%','${drivingLicence}','%')
+		</if>
+		<if test="null != id and '' != id">
+		and (t.id=#{id} or t.tjUserId=#{id})
+		</if>
+		<if test="minDate!=null and '' != minDate"><![CDATA[ and t.createTime >=  #{minDate}  ]]></if>
+        <if test="maxDate!=null and '' != maxDate"><![CDATA[ and t.createTime <  date_add(#{maxDate} , INTERVAL 1 day)]]></if>
+	</select>
+</mapper>

@@ -1,0 +1,4 @@
+后台向前台发送数据格式规范：
+1、如果是列表，则要如下结构
+{"message":"查询成功","rows":[{"id":1,"bankAccount":"昌北支行","bankCard":"2322323432423","birthdayStr":"","carNum":"赣A0A460","cardNum":"362000154845752","createTimeStr":"","deleteFlag":0,"drivingLicence":"362000154845752","freezed":0,"lastLoginTimeStr":"","lastUpdateTimeStr":"","password":"e10adc3949ba59abbe56e057f20f883e","realName":"管理员","sex":1,"telphone":"12345","userName":"admin","userType":1}],"success":1,"total":4}
+其中rows为数组，必选字段；total为数字，必选字段；rows中每一条记录必选以id作为主键,数据类型不限。

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="report">
+	<select id="returnReport" parameterType="Map" resultType="Map">
+		select f.* ,sum(f.ReturnAmount) as toAmount,count(1) as count from fundaccount f, user u
+		where f.userId=u.id and f.type=1
+		group by f.userId,f.agentLevel order by returnAmount desc
+	</select>
+	
+	<select id="findAccountUser" parameterType="Map" resultType="Map">
+		select f.userId,u.userName,u.realName,sum(f.returnAmount) as tmount from fundaccount f ,user u  where f.userId=u.id and f.type=1 GROUP BY f.userId order by tmount desc
+	</select>
+	
+<select id="getIncomePage" parameterType="Map" resultType="Map">
+		SELECT uo.*,u.`userName`,u.`realName` FROM userorder uo ,USER u 
+		WHERE uo.`userId`=u.`id` 
+		<if test="null != userName and '' != userName">
+			and u.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != realName and '' != realName">
+			and u.realName like CONCAT('%','${realName}','%')
+		</if>
+		<if test="null != startTime and '' != startTime">
+			and uo.createTime <![CDATA[ >= ]]> #{startTime} 
+		</if>
+		<if test="null != endTime and '' != endTime">
+			and uo.createTime <![CDATA[ < ]]> date_add(#{endTime} , INTERVAL 1 day)
+		</if>
+		ORDER BY uo.`createTime` DESC
+	</select>
+<select id="getIncomeList" parameterType="Map" resultType="Map">
+		SELECT uo.*,u.`userName`,u.`realName` FROM userorder uo ,USER u 
+		WHERE uo.`userId`=u.`id` 
+		<if test="null != userName and '' != userName">
+			and u.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != realName and '' != realName">
+			and u.realName like CONCAT('%','${realName}','%')
+		</if>
+		<if test="null != startTime and '' != startTime">
+			and uo.createTime <![CDATA[ >= ]]> #{startTime} 
+		</if>
+		<if test="null != endTime and '' != endTime">
+			and uo.createTime <![CDATA[ < ]]> date_add(#{endTime} , INTERVAL 1 day)
+		</if>
+		 ORDER BY uo.`createTime` DESC
+	</select>
+<select id="getGooutPage" parameterType="Map" resultType="Map">
+<!-- SELECT fi.id,SUM(fi.`returnIntegral`) AS returnIntegralSum,fi.`userId`,u.`userName`,u.`realName` 
+FROM funIntegral fi,USER u WHERE fi.`userId`=u.`id` GROUP BY fi.`userId` -->
+SELECT fi.id,fi.`returnIntegral` AS returnIntegralSum,fi.`userId`,fi.`createTime`,fi.`minusIntegral`,fi.`minusTime`,u.`userName`,u.`realName` 
+FROM funIntegral fi,USER u WHERE fi.`userId`=u.`id` 
+		<if test="null != userName and '' != userName">
+			and u.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != realName and '' != realName">
+			and u.realName like CONCAT('%','${realName}','%')
+		</if>
+		<if test="null != startTime and '' != startTime">
+			and fi.createTime <![CDATA[ >= ]]> #{startTime} 
+		</if>
+		<if test="null != endTime and '' != endTime">
+			and fi.createTime <![CDATA[ < ]]> date_add(#{endTime} , INTERVAL 1 day)
+		</if>
+	</select>
+<select id="getGooutList" parameterType="Map" resultType="Map">
+<!-- SELECT fi.id,SUM(fi.`returnIntegral`) AS returnIntegralSum,fi.`userId`,u.`userName`,u.`realName` 
+FROM funIntegral fi,USER u WHERE fi.`userId`=u.`id` GROUP BY fi.`userId` -->
+SELECT fi.id,fi.`returnIntegral` AS returnIntegralSum,fi.`userId`,fi.`createTime`,fi.`minusIntegral`,fi.`minusTime`,u.`userName`,u.`realName` 
+FROM funIntegral fi,USER u WHERE fi.`userId`=u.`id` 
+		<if test="null != userName and '' != userName">
+			and u.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != realName and '' != realName">
+			and u.realName like CONCAT('%','${realName}','%')
+		</if>
+		<if test="null != startTime and '' != startTime">
+			and fi.createTime <![CDATA[ >= ]]> #{startTime} 
+		</if>
+		<if test="null != endTime and '' != endTime">
+			and fi.createTime <![CDATA[ < ]]> date_add(#{endTime} , INTERVAL 1 day)
+		</if>
+	</select>
+	<select id="findUserList" parameterType="Map" resultType="map">
+		select * from user t where  t.DeleteFlag=0 and t.userName !='admin'
+		<if test="null != userName and '' != userName">
+		and t.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != id and '' != id">
+		and (t.id=#{id} or t.tjUserId=#{id})
+		</if>
+	</select>
+	<select id="findUserList2" parameterType="Map" resultType="map">
+		select * from user t where  t.DeleteFlag=0 
+		<if test="null != userName and '' != userName">
+		and t.userName like CONCAT('%','${userName}','%')
+		</if>
+		<if test="null != id and '' != id">
+		and (t.id=#{id} or t.tjUserId=#{id})
+		</if>
+	</select>
+	<select id="findZjorderList" parameterType="Map" resultType="Map">
+SELECT uo.*,uc.`carNum`,uc.`vehicleLicence` FROM userorder uo ,usercar uc WHERE uo.`carId`=uc.`id` AND uo.`userId`=#{userId};
+	</select>
+	<select id="findTjorderList" parameterType="Map" resultType="Map">
+<!-- SELECT uo.*,uc.`carNum`,uc.`vehicleLicence` FROM userorder uo ,usercar uc WHERE uo.`carId`=uc.`id` AND uo.tjOrderCode=#{tjOrderCode};
+ -->	
+ SELECT uo.*,uc.`carNum`,uc.`vehicleLicence`,u.`realName`,u.`userName` FROM userorder uo ,usercar uc,USER u 
+ WHERE uo.`carId`=uc.`id` AND uo.`userId`=u.`id` AND uo.tjOrderCode=#{tjOrderCode}
+ </select>
+	<select id="findOrderList" parameterType="Map" resultType="Map">
+SELECT uo.*,uc.`carNum`,uc.`vehicleLicence`,u.`userName`,u.`realName` FROM userorder uo ,usercar uc,USER u 
+WHERE uo.`carId`=uc.`id` AND uo.`userId`=u.`id` ORDER BY uo.`userId`
+	</select>
+	<select id="findOrderList2" parameterType="Map" resultType="Map">
+	SELECT uo.*,uc.`carNum`,uc.`vehicleLicence`,u.`userName`,u.`realName` FROM userorder uo ,usercar uc,USER u 
+	WHERE uo.`carId`=uc.`id` AND uo.`userId`=u.`id` AND u.`userName` !='admin' 
+	<if test="null != userName and '' != userName">
+				and u.userName like CONCAT('%','${userName}','%')
+			</if>
+			<if test="null != realName and '' != realName">
+				and u.realName like CONCAT('%','${realName}','%')
+			</if>
+	 ORDER BY uo.`userId`
+	</select>
+	
+	<select id="findAllOrder" resultType="map">
+		 <![CDATA[
+		SELECT uo.*, CONCAT('<font color=red>', u.realName, '</font>', ' @', '<font color=blue>', u.userName, '</font>', ' #', '<font color=green>', ucc.carNum, '</font>', ' ¥', CAST(uo.totalMoney as char)) text  
+		
+		FROM userorder uo LEFT JOIN user u on uo.userId=u.id
+		LEFT JOIN usercar ucc on uo.carId=ucc.id
+]]>
+</select>
+</mapper>

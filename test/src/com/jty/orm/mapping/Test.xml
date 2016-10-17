@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+
+	<select id="testFindPage" parameterType="String" resultType="map">
+		select * from person t 
+		<if test="null != name and '' != name">
+		where t.name=#{name}
+		</if>
+	</select>
+</mapper>

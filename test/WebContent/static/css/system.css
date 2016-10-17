@@ -1,0 +1,13 @@
+.text{width: 158px;height: 20px;border:1px solid #95B8E7;}
+.baseTable{width:100%; border-collapse:collapse; empty-cells:show; border:none;}
+.baseTable td{padding:5px;}
+.baseTable th,.baseTable td.baseTD{text-align:center;}
+.baseTable label{display:block; text-align:right;}
+
+#moduleTree{width:260px; height:100%; float:left; border-right:3px solid #eaf2ff; overflow:auto;}
+#functionPermission{overflow:hidden;  height:100%; position:relative;}
+#roleDiv{overflow:hidden;  height:100%; position:relative;}
+#buttonPermission{position:absolute; bottom:10px; right:10px;}
+
+#functionGrid{height:100%; width:100%;} 
+#roleTable{height:100%; width:100%;} 

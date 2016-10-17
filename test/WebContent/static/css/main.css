@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+*{margin:0; padding:0; font:14px "微软雅黑", "宋体"}
+a{text-decoration:none;}
+ul{list-style:none;}
+a img{border:none;}
+
+/*流式布局模块定位*/
+#desk,#topArea,#midArea,#botArea,#subMenuArea,#treeMenu,#main,#rightArea,#rightAreaTop,#systemTool,#tabArea,#slider{position:absolute; clear:both;}
+#desk{top:0; left:0; right:0; bottom:0; min-width:1000px; min-height:500px; overflow:hidden;}
+#topArea{top:0; right:0; left:0; height:80px; background:#157fbd;}
+#midArea{top:80px; bottom:35px; left:0; right:0;}
+#botArea{bottom:0; left:0; right:0; height:35px; background:#157fbd;}
+#subMenuArea{top:0; left:0; bottom:0; width:180px; background:#e5e5e5;}
+#rightArea{left:190px; right:0; top:0; bottom:0;}
+#rightAreaTop{top:0; height:41px; right:0; left:0; padding-bottom:7px; background:url(../img/innerShadow.png) repeat-x left bottom;}
+#tabArea{top:0; left:5px; right:450px; height:41px; overflow:hidden;}
+#systemTool{top:0; height:41px; right:0; overflow:hidden;}
+#main{top:54px; left:0; right:0; bottom:0; overflow:auto;}
+#midArea.shrink #subMenuArea{left:-180px;}
+#midArea.shrink #slider{left:0;}
+#midArea.shrink #rightArea{left:10px;}
+#slider{top:0; bottom:0px; width:10px; left:180px; background:#4daee7; cursor:pointer;}
+#slider span{position:absolute; top:50%; left:50%; margin-top:-2px; margin-left:-2px; width:5px; height:5px; background:url(../img/slider.png) no-repeat; overflow:hidden; cursor:pointer;}
+#slider span:hover{background-position:0 -5px;}
+#midArea.shrink #slider span{background-position:-5px 0;}
+#midArea.shrink #slider span:hover{background-position:-5px -5px;}
+
+
+/*界面头部区域*/
+#logo{width:300px; height:43px; background:url(../img/logo1.png) no-repeat; float:left; margin:21px 0 0 30px; overflow:hidden;}
+#nav{float:right;}
+#nav li{float:left; height:80px; padding-right:1px; background:url(../img/navSeparate.png) no-repeat top right; overflow:hidden;}
+#nav li.last{background:none;}
+#nav a{display:block; padding:0 45px; overflow:hidden;}
+#nav a img{display:block; width:30px; height:28px; margin:14px auto 0;}
+#nav a span{display:block; text-align:center; height:38px; line-height:30px; color:white; font-size:16px;}
+#nav a.selected{background:#0067a4;}
+
+/*系统信息 样式*/
+#systemTool p{float:right; height:41px; line-height:41px; margin-right:15px; color:#4e89ac;}
+#systemTool p span{line-height:41px;}
+/* #username{padding-left:28px; background:url(../img/icon13.png) no-repeat left center;} */
+#dname{padding-left:28px; background:url(../img/icon14.png) no-repeat left center;}
+#infoPrompt{background:url(../img/infoPrompt.png) no-repeat left 15px; padding-left:32px; cursor:pointer;}
+#infoPrompt *{float:left; line-height:41px; cursor:pointer;}
+.infoNumber{width:14px; height:14px; overflow:hidden; background:url(../img/infoNumber.png) no-repeat 0 -900px; margin:13px 0 0 3px; display:none;}
+.infoNumber-1{background-position:0 0; display:block;}
+.infoNumber-2{background-position:0 -14px;}
+.infoNumber-3{background-position:0 -28px;}
+.infoNumber-4{background-position:0 -42px;}
+.infoNumber-5{background-position:0 -56px;}
+.infoNumber-6{background-position:0 -70px;}
+.infoNumber-7{background-position:0 -84px;}
+.infoNumber-8{background-position:0 -98px;}
+.infoNumber-9{background-position:0 -112px;}
+.infoNumber-10{background-position:0 -136px;}
+.fontcolor{color:#ff9900}
+#out{padding-left:20px; background:url(../img/out.png) no-repeat left center; cursor:pointer;}
+#person{padding-left:23px; background:url(../img/user.png) no-repeat left center; cursor:pointer;}
+#dept{padding-left:25px; background:url(../img/department.png) no-repeat left center; cursor:pointer;}
+#updatePwd{cursor:pointer;}
+
+
+/*左边菜单样式*/
+.subMenu{width:100%; height:100%;}
+.subMenuTitle{height:41px; cursor:pointer; background:#4daee7; width:100%; color:white;}
+.subMenuTitle.expand{background:#4daee7 url(../img/up.png) no-repeat 150px 17px;}
+.subMenuTitle.shrink{background:#4daee7 url(../img/down.png) no-repeat 150px 17px;}
+.subMenuTitle img{width:24px; height:24px; float:left; margin:8px 5px 1px 10px;}
+.subMenuTitle label{font-size:16px; font-weight:bold; float:left; margin:9px auto auto 5px;}
+.subMenu > ul > li{padding:0 15px; height:40px; border-bottom:1px solid #bebebe; cursor:pointer; position:relative; text-align:center;}
+.subMenu > ul > li li{position:relative;}
+.subMenu > ul > li > ul, .subMenu > ul > li > ul > li >ul{position:absolute; left:180px; top:0; background:#e5e5e5; width:80%; z-index:99; display:none;}
+.subMenu > ul > li > ul > li > ul{left:144px; width:100%;}
+.subMenu > ul > li:hover > ul, .subMenu > ul > li:hover > ul > li:hover > ul{display:block;}
+.subMenu > ul > li > ul a{display:block; height:41px; line-height:41px; font-size:14px; color:#323232; padding:0 5px;}
+.subMenu > ul > li > ul a:hover{background:#9ec6de;}
+.subMenuArrow,.subMenu > ul > li > a{color:#323232; display:block; background:url(../img/subMenuArrow.png) no-repeat right center; font-size:14px;  line-height:40px; text-align:center;}
+.subMenu > ul > li > a{background:none;}
+.subMenu > ul > li:hover{background:#bebebe url(../img/subMenuFLS.png) repeat-y;}
+.subMenu > ul > li:hover > a{color:#0067a4;}
+.subMenu > ul > li ul .subMenuArrow{background-position:128px center;}
+.subMenu > ul > li > ul > li >ul a{text-align:center;}
+
+/*框架选项卡样式*/
+.tabConLimit{width:100%; height:41px; overflow:hidden;}
+.tabConNoLimit{width:99999px; height:41px; float:left;}
+.tabConNoLimit ul,.tabConNoLimit li{float:left;}
+.tabConNoLimit li{height:32px; margin:9px 5px 0 0; cursor:pointer;}
+.tabConNoLimit li *{float:left; height:32px; overflow:hidden;}
+.tabLeft,.tabRight{width:10px; background:url(../img/tabE.png) no-repeat 0 -100px;}
+.tabText{padding:0 10px 0 18px; line-height:31px; font-size:14px; font-weight:bold; color:#888;}
+.tabClose{width:8px; height:32px;}
+.tabConNoLimit li:hover .tabClose{background:url(../img/tabClose.png) no-repeat center center;}
+.tabConNoLimit li.selected .tabLeft{background-position:0 0;}
+.tabConNoLimit li.selected .tabRight{background-position:-10px 0;}
+.tabConNoLimit li.selected .tabText{height:31px; border-top:1px solid #dcdcdc; color:#0067a4;}
+.tabConNoLimit li.selected .tabClose{height:31px; border-top:1px solid #dcdcdc; background:url(../img/tabClose.png) no-repeat center center;}
+.tabPrev,.tabNext{width:6px; height:7px; background:url(../img/tabArrow.png) no-repeat 0 0; cursor:pointer; float:left; margin:17px 5px 0 0; display:none;}
+.tabNext{background-position:-6px 0;}
+
+/*底部工具样式*/
+#botArea p{float:left; margin-right:25px; color:white;  cursor:pointer; overflow:hidden; line-height:35px; font-size:14px;}
+#botArea p span{float:left; width:17px; height:17px; margin:11px 5px 0 0; background-image:url(../img/botIcon.png); background-repeat:no-repeat;}
+#botArea p label{line-height:35px; float:left; cursor:pointer;}
+#online{margin-left:30px;}
+#contacts span{background-position:-17px;}
+#calculator span{background-position:-34px;}
+#calendar span{background-position:-51px;}
+
+
+.commonBtn{margin:0 5px; width:96px; height:26px; font-size:14px; color:white; text-align:center; line-height:24px; background:url(../images/commonBtn.png) no-repeat; overflow:hidden; border:none; cursor:pointer;}
+.commonBtn:hover{background-position:0 -26px;}
+.baseTable{width:100%; border-collapse:collapse; empty-cells:show; border:none;}
+.baseTable td{padding:5px;}
+.baseTable th,.baseTable td.baseTD{text-align:center;}
+.baseTable label{display:block; text-align:right;}
+

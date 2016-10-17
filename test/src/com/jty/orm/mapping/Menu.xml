@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menu">
+	<select id="getTopMenu" parameterType="Map" resultType="Map">
+		SELECT * FROM menu m WHERE m.`PARENTID`=0 ORDER BY m.`SORT` 
+	</select>
+	<select id="getMenuByParent" parameterType="Map" resultType="Map">
+		SELECT * FROM menu m WHERE m.`PARENTID`=#{PARENTID} 
+		<if test="0 == userType">
+			AND m.`FLAG`=1
+		</if>
+		ORDER BY m.`SORT` 
+	</select>
+</mapper>
